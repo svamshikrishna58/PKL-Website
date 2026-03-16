@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pro Kabaddi League – Home</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Home-specific styles -->
+  <style>
+    /* ---- Live Score Ticker ---- */
+    .score-ticker-bar {
+      background: var(--dark2);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      z-index: 990;
+      padding: 8px 0;
+    }
+
+    .score-ticker-inner {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .score-ticker-inner::-webkit-scrollbar { display: none; }
+
+    .score-chip {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .score-chip-teams { color: var(--text); }
+    .score-chip-score { color: var(--gold); font-weight: 700; }
+    .score-chip-status {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: rgba(0,200,100,0.2);
+      color: #00C864;
+    }
+    .score-chip-status.ended { background: rgba(255,255,255,0.1); color: var(--text-muted); }
+
+    .score-divider {
+      width: 1px; height: 20px;
+      background: rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+
+    /* Push hero down for score bar */
+    .page-wrap-home { padding-top: calc(var(--nav-h) + 45px); }
+
+    /* ---- Number Highlights Section ---- */
+    .highlights-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 80px;
+    }
+
+    .highlight-item {
+      background: var(--dark2);
+      padding: 32px 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .highlight-item:hover { background: var(--dark3); }
+
+    .highlight-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .highlight-val span { color: var(--red); }
+
+    .highlight-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .highlights-row { grid-template-columns: repeat(2, 1fr); }
+      .score-ticker-bar { display: none; }
+      .page-wrap-home { padding-top: var(--nav-h); }
+    }
+    @media (max-width: 480px) {
+      .highlights-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav injected by nav.js -->
+
+  <div class="page-wrap page-wrap-home">
+
+    <!-- ============ SCORE TICKER ============ -->
+    <div class="score-ticker-bar">
+      <div class="container">
+        <div class="score-ticker-inner">
+          <div class="score-chip">
+            <span class="score-chip-status">LIVE</span>
+            <span class="score-chip-teams">Jaipur Pink Panthers vs U Mumba</span>
+            <span class="score-chip-score">34 – 29</span>
+            <span style="color:var(--text-muted);font-size:11px;">Raid 28</span>
+          </div>
+          <div class="score-divider"></div>
+          <div class="score-chip">
+            <span class="score-chip-status ended">FT</span>
+            <span class="score-chip-teams">Bengal Warriors vs Dabang Delhi</span>
+            <span class="score-chip-score">41 – 38</span>
+          </div>
+          <div class="score-divider"></div>
+          <div class="score-chip">
+            <span class="score-chip-status ended">FT</span>
+            <span class="score-chip-teams">Tamil Thalaivas vs Puneri Paltan</span>
+            <span class="score-chip-score">36 – 44</span>
+          </div>
+          <div class="score-divider"></div>
+          <div class="score-chip">
+            <span style="color:var(--text-muted);font-size:11px;letter-spacing:0.08em;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;">Next Match</span>
+            <span class="score-chip-teams">Patna Pirates vs Gujarat Giants</span>
+            <span style="color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;">Tonight • 8:00 PM</span>
+          </div>
+          <div class="score-divider"></div>
+          <div class="score-chip">
+            <span style="color:var(--text-muted);font-size:11px;letter-spacing:0.08em;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;">Next Match</span>
+            <span class="score-chip-teams">Haryana Steelers vs UP Yoddha</span>
+            <span style="color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;">Tomorrow • 7:30 PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-grid-pattern"></div>
+      <div class="container" style="width:100%;position:relative;z-index:2;">
+        <div class="hero-content">
+          <!-- Eyebrow -->
+          <div class="hero-eyebrow">
+            <div class="hero-eyebrow-line"></div>
+            <span class="hero-eyebrow-text">Season 11 · 2025</span>
+          </div>
+
+          <!-- Main Title -->
+          <h1 class="hero-title">
+            THE<br>
+            <span class="accent">KABADDI</span><br>
+            <span class="gold">REVOLUTION</span>
+          </h1>
+
+          <p class="hero-desc">
+            Witness India's most electrifying sport at its finest. 12 teams. 
+            130+ matches. One champion. The Pro Kabaddi League Season 11 is here.
+          </p>
+
+          <div class="hero-actions">
+            <a href="schedule.html" class="btn btn-primary">View Schedule →</a>
+            <a href="teams.html" class="btn btn-outline">Explore Teams</a>
+          </div>
+
+          <!-- Stats -->
+          <div class="hero-stats">
+            <div class="hero-stat-item">
+              <div class="hero-stat-val"><span data-count="12">0</span></div>
+              <div class="hero-stat-label">Teams</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-val"><span data-count="131">0</span></div>
+              <div class="hero-stat-label">Matches</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-val"><span data-count="250">0</span><span style="color:var(--red);">+</span></div>
+              <div class="hero-stat-label">Players</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-val"><span data-count="85">0</span><span style="color:var(--red);">M</span></div>
+              <div class="hero-stat-label">Viewers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Background watermark text -->
+      <div class="hero-right" aria-hidden="true">PKL</div>
+    </section>
+
+    <!-- ============ HIGHLIGHTS STRIP ============ -->
+    <div class="container section-sm">
+      <div class="highlights-row reveal">
+        <div class="highlight-item">
+          <div class="highlight-val"><span data-count="11">0</span></div>
+          <div class="highlight-label">Seasons Completed</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-val"><span data-count="5">0</span></div>
+          <div class="highlight-label">Different Champions</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-val"><span data-count="1000">0</span><span style="color:var(--red);">+</span></div>
+          <div class="highlight-label">Total Matches Played</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-val"><span data-count="28">0</span></div>
+          <div class="highlight-label">Cities Covered</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ UPCOMING MATCH ============ -->
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;" class="reveal">
+          <div>
+            <div class="tag">Next Match</div>
+            <h2 class="section-title">UPCOMING <span style="color:var(--red);">CLASH</span></h2>
+          </div>
+          <a href="schedule.html" class="btn btn-outline" style="margin-bottom:12px;">Full Schedule</a>
+        </div>
+
+        <div class="upcoming-banner reveal">
+          <div class="upcoming-match-teams">
+            <div class="upcoming-team">
+              <div class="upcoming-team-emoji">🐯</div>
+              <div class="upcoming-team-name">Patna Pirates</div>
+              <div style="font-size:13px;color:var(--text-muted);">Patna</div>
+            </div>
+            <div class="upcoming-vs">VS</div>
+            <div class="upcoming-team">
+              <div class="upcoming-team-emoji">🦁</div>
+              <div class="upcoming-team-name">Gujarat Giants</div>
+              <div style="font-size:13px;color:var(--text-muted);">Ahmedabad</div>
+            </div>
+          </div>
+
+          <div class="upcoming-meta">
+            <div class="upcoming-time">Tonight</div>
+            <div class="upcoming-date">8:00 PM</div>
+            <div class="upcoming-venue">📍 Patna Sports Complex</div>
+            <a href="schedule.html" class="btn btn-primary" style="margin-top:16px;">Buy Tickets</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED TEAMS ============ -->
+    <section class="section" style="background:var(--dark2);padding:64px 0;">
+      <div class="container">
+        <div class="reveal" style="margin-bottom:32px;">
+          <div class="tag">Season 11</div>
+          <h2 class="section-title">FEATURED <span style="color:var(--red);">TEAMS</span></h2>
+          <p class="section-sub">The 12 franchises competing for glory this season</p>
+        </div>
+
+        <div class="featured-teams-row reveal">
+          <a href="teams.html" class="featured-team-chip" style="--team-color:#FF6B35;">
+            <div class="featured-team-chip-emoji">🐯</div>
+            <div class="featured-team-chip-info">
+              <div class="featured-team-chip-name">Patna Pirates</div>
+              <div class="featured-team-chip-city">Patna · 3× Champions</div>
+            </div>
+          </a>
+          <a href="teams.html" class="featured-team-chip" style="--team-color:#FFB800;">
+            <div class="featured-team-chip-emoji">🎯</div>
+            <div class="featured-team-chip-info">
+              <div class="featured-team-chip-name">Jaipur Pink Panthers</div>
+              <div class="featured-team-chip-city">Jaipur · 2× Champions</div>
+            </div>
+          </a>
+          <a href="teams.html" class="featured-team-chip" style="--team-color:#E8001C;">
+            <div class="featured-team-chip-emoji">⚡</div>
+            <div class="featured-team-chip-info">
+              <div class="featured-team-chip-name">Bengaluru Bulls</div>
+              <div class="featured-team-chip-city">Bengaluru · 1× Champions</div>
+            </div>
+          </a>
+          <a href="teams.html" class="featured-team-chip" style="--team-color:#0055B3;">
+            <div class="featured-team-chip-emoji">🐬</div>
+            <div class="featured-team-chip-info">
+              <div class="featured-team-chip-name">U Mumba</div>
+              <div class="featured-team-chip-city">Mumbai · 1× Champions</div>
+            </div>
+          </a>
+          <a href="teams.html" class="featured-team-chip">
+            <div class="featured-team-chip-emoji">🐅</div>
+            <div class="featured-team-chip-info">
+              <div class="featured-team-chip-name">Bengal Warriors</div>
+              <div class="featured-team-chip-city">Kolkata · 1× Champions</div>
+            </div>
+          </a>
+          <a href="teams.html" class="featured-team-chip">
+            <div class="featured-team-chip-emoji">🗡️</div>
+            <div class="featured-team-chip-info">
+              <div class="featured-team-chip-name">Dabang Delhi K.C.</div>
+              <div class="featured-team-chip-city">New Delhi · 1× Champions</div>
+            </div>
+          </a>
+          <a href="teams.html" class="featured-team-chip">
+            <div class="featured-team-chip-emoji">🦬</div>
+            <div class="featured-team-chip-info">
+              <div class="featured-team-chip-name">Haryana Steelers</div>
+              <div class="featured-team-chip-city">Rohtak</div>
+            </div>
+          </a>
+          <a href="teams.html" class="featured-team-chip">
+            <div class="featured-team-chip-emoji">🔱</div>
+            <div class="featured-team-chip-info">
+              <div class="featured-team-chip-name">Puneri Paltan</div>
+              <div class="featured-team-chip-city">Pune</div>
+            </div>
+          </a>
+        </div>
+
+        <div style="text-align:center;margin-top:32px;" class="reveal">
+          <a href="teams.html" class="btn btn-outline">View All 12 Teams →</a>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- ============ CTA BANNER ============ -->
+    <section style="padding:0 0 80px;">
+      <div class="container">
+        <div class="reveal" style="
+          background: linear-gradient(135deg, var(--red) 0%, #8B0012 100%);
+          border-radius: 20px;
+          padding: 56px 48px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 32px;
+          position: relative;
+          overflow: hidden;
+        ">
+          <div style="position:absolute;right:-40px;top:-40px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.06);pointer-events:none;"></div>
+          <div style="position:absolute;right:120px;bottom:-80px;width:200px;height:200px;border-radius:50%;background:rgba(0,0,0,0.1);pointer-events:none;"></div>
+          <div>
+            <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,52px);letter-spacing:0.04em;color:white;margin-bottom:8px;line-height:1.1;">
+              DON'T MISS A SINGLE RAID
+            </h2>
+            <p style="color:rgba(255,255,255,0.8);font-size:16px;max-width:480px;">
+              Subscribe for live score alerts, match reminders, and exclusive PKL content delivered directly to you.
+            </p>
+          </div>
+          <div style="display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap;">
+            <a href="schedule.html" class="btn" style="background:white;color:var(--red);font-family:'Barlow Condensed',sans-serif;">View Schedule</a>
+            <a href="contact.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:white;">Subscribe</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /page-wrap -->
+
+  <!-- Scripts -->
+  <script src="nav.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

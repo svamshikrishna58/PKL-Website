@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match Schedule – Pro Kabaddi League</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .schedule-day { margin-bottom: 48px; }
+    .schedule-day-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .schedule-day-date {
+      background: var(--red);
+      border-radius: 10px;
+      padding: 8px 16px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .schedule-day-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: white;
+      line-height: 1;
+    }
+    .schedule-day-month {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+    .schedule-day-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .schedule-day-count {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .schedule-matches { display: flex; flex-direction: column; gap: 16px; }
+    .schedule-match-card {
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: var(--transition);
+    }
+    .schedule-match-card:hover {
+      border-color: rgba(255,184,0,0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .schedule-time {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--gold);
+      flex-shrink: 0;
+      width: 80px;
+      text-align: center;
+      line-height: 1;
+    }
+    .schedule-time small {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .schedule-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+    .schedule-teams {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .schedule-team {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .schedule-team.right { justify-content: flex-end; text-align: right; flex-direction: row-reverse; }
+    .schedule-team-emoji { font-size: 28px; flex-shrink: 0; }
+    .schedule-team-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .schedule-team-city { font-size: 12px; color: var(--text-muted); }
+    .schedule-vs {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      color: var(--red);
+      flex-shrink: 0;
+      padding: 0 8px;
+    }
+    .schedule-venue {
+      font-size: 13px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      text-align: right;
+      min-width: 160px;
+    }
+    .schedule-venue-icon { margin-bottom: 4px; }
+    .schedule-status {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .status-upcoming { background: rgba(255,184,0,0.1); color: var(--gold); border: 1px solid rgba(255,184,0,0.2); }
+    .status-live { background: rgba(232,0,28,0.15); color: var(--red); border: 1px solid rgba(232,0,28,0.3); animation: pulseLive 1.5s infinite; }
+    .status-completed { background: rgba(255,255,255,0.06); color: var(--text-muted); border: 1px solid rgba(255,255,255,0.1); }
+
+    .score-display {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: var(--white);
+      padding: 0 12px;
+    }
+
+    @media (max-width: 768px) {
+      .schedule-venue { display: none; }
+      .schedule-match-card { flex-wrap: wrap; }
+      .schedule-team-city { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-breadcrumb"><a href="index.html">Home</a> / Schedule</div>
+        <h1 class="page-hero-title">MATCH <span>SCHEDULE</span></h1>
+        <p style="color:var(--text-muted);font-size:15px;max-width:500px;margin-top:8px;">
+          131 matches. 12 teams. 28 venues. Never miss a raid, tackle or super-raid moment.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <section style="padding:32px 0 0;">
+      <div class="container">
+        <div class="filter-tabs reveal">
+          <button class="filter-tab active" data-filter="all">All Matches</button>
+          <button class="filter-tab" data-filter="upcoming">Upcoming</button>
+          <button class="filter-tab" data-filter="live">Live</button>
+          <button class="filter-tab" data-filter="completed">Completed</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule -->
+    <section class="section" style="padding-top:16px;">
+      <div class="container">
+
+        <!-- LIVE TODAY -->
+        <div class="schedule-day reveal">
+          <div class="schedule-day-header">
+            <div class="schedule-day-date">
+              <div class="schedule-day-num">12</div>
+              <div class="schedule-day-month">Dec 2025</div>
+            </div>
+            <div>
+              <div class="schedule-day-label">Today</div>
+              <div class="schedule-day-count">2 matches</div>
+            </div>
+          </div>
+          <div class="schedule-matches">
+
+            <div class="schedule-match-card" data-status="live">
+              <div class="schedule-time">LIVE<small>Raid 28</small></div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-teams">
+                <div class="schedule-team">
+                  <span class="schedule-team-emoji">🎯</span>
+                  <div>
+                    <div class="schedule-team-name">Jaipur Pink Panthers</div>
+                    <div class="schedule-team-city">Jaipur</div>
+                  </div>
+                </div>
+                <div class="score-display">34 – 29</div>
+                <div class="schedule-team right">
+                  <span class="schedule-team-emoji">🐬</span>
+                  <div>
+                    <div class="schedule-team-name">U Mumba</div>
+                    <div class="schedule-team-city">Mumbai</div>
+                  </div>
+                </div>
+              </div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-venue">
+                <div class="schedule-venue-icon">📍</div>
+                <div>SMS Stadium, Jaipur</div>
+              </div>
+              <span class="schedule-status status-live">● LIVE</span>
+            </div>
+
+            <div class="schedule-match-card" data-status="upcoming">
+              <div class="schedule-time">8:00<small>PM</small></div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-teams">
+                <div class="schedule-team">
+                  <span class="schedule-team-emoji">🐯</span>
+                  <div>
+                    <div class="schedule-team-name">Patna Pirates</div>
+                    <div class="schedule-team-city">Patna</div>
+                  </div>
+                </div>
+                <div class="schedule-vs">VS</div>
+                <div class="schedule-team right">
+                  <span class="schedule-team-emoji">🦁</span>
+                  <div>
+                    <div class="schedule-team-name">Gujarat Giants</div>
+                    <div class="schedule-team-city">Ahmedabad</div>
+                  </div>
+                </div>
+              </div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-venue">
+                <div class="schedule-venue-icon">📍</div>
+                <div>Patna Sports Complex</div>
+              </div>
+              <span class="schedule-status status-upcoming">Upcoming</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Tomorrow -->
+        <div class="schedule-day reveal">
+          <div class="schedule-day-header">
+            <div class="schedule-day-date" style="background:var(--dark3);border:1px solid rgba(255,255,255,0.1);">
+              <div class="schedule-day-num" style="color:var(--gold);">13</div>
+              <div class="schedule-day-month">Dec 2025</div>
+            </div>
+            <div>
+              <div class="schedule-day-label">Tomorrow</div>
+              <div class="schedule-day-count">2 matches</div>
+            </div>
+          </div>
+          <div class="schedule-matches">
+            <div class="schedule-match-card" data-status="upcoming">
+              <div class="schedule-time">7:30<small>PM</small></div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-teams">
+                <div class="schedule-team">
+                  <span class="schedule-team-emoji">🦬</span>
+                  <div>
+                    <div class="schedule-team-name">Haryana Steelers</div>
+                    <div class="schedule-team-city">Rohtak</div>
+                  </div>
+                </div>
+                <div class="schedule-vs">VS</div>
+                <div class="schedule-team right">
+                  <span class="schedule-team-emoji">⚔️</span>
+                  <div>
+                    <div class="schedule-team-name">UP Yoddha</div>
+                    <div class="schedule-team-city">Lucknow</div>
+                  </div>
+                </div>
+              </div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-venue">
+                <div class="schedule-venue-icon">📍</div>
+                <div>Tau Devi Lal Stadium</div>
+              </div>
+              <span class="schedule-status status-upcoming">Upcoming</span>
+            </div>
+
+            <div class="schedule-match-card" data-status="upcoming">
+              <div class="schedule-time">9:00<small>PM</small></div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-teams">
+                <div class="schedule-team">
+                  <span class="schedule-team-emoji">🔱</span>
+                  <div>
+                    <div class="schedule-team-name">Puneri Paltan</div>
+                    <div class="schedule-team-city">Pune</div>
+                  </div>
+                </div>
+                <div class="schedule-vs">VS</div>
+                <div class="schedule-team right">
+                  <span class="schedule-team-emoji">⚡</span>
+                  <div>
+                    <div class="schedule-team-name">Bengaluru Bulls</div>
+                    <div class="schedule-team-city">Bengaluru</div>
+                  </div>
+                </div>
+              </div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-venue">
+                <div class="schedule-venue-icon">📍</div>
+                <div>Shree Shiv Chhatrapati Stadium</div>
+              </div>
+              <span class="schedule-status status-upcoming">Upcoming</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dec 15 -->
+        <div class="schedule-day reveal">
+          <div class="schedule-day-header">
+            <div class="schedule-day-date" style="background:var(--dark3);border:1px solid rgba(255,255,255,0.1);">
+              <div class="schedule-day-num" style="color:var(--gold);">15</div>
+              <div class="schedule-day-month">Dec 2025</div>
+            </div>
+            <div>
+              <div class="schedule-day-label">Sunday, Dec 15</div>
+              <div class="schedule-day-count">3 matches</div>
+            </div>
+          </div>
+          <div class="schedule-matches">
+            <div class="schedule-match-card" data-status="upcoming">
+              <div class="schedule-time">4:00<small>PM</small></div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-teams">
+                <div class="schedule-team">
+                  <span class="schedule-team-emoji">👑</span>
+                  <div><div class="schedule-team-name">Tamil Thalaivas</div><div class="schedule-team-city">Chennai</div></div>
+                </div>
+                <div class="schedule-vs">VS</div>
+                <div class="schedule-team right">
+                  <span class="schedule-team-emoji">🐅</span>
+                  <div><div class="schedule-team-name">Bengal Warriors</div><div class="schedule-team-city">Kolkata</div></div>
+                </div>
+              </div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-venue"><div class="schedule-venue-icon">📍</div><div>Jawaharlal Nehru Indoor Stadium</div></div>
+              <span class="schedule-status status-upcoming">Upcoming</span>
+            </div>
+
+            <div class="schedule-match-card" data-status="upcoming">
+              <div class="schedule-time">7:30<small>PM</small></div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-teams">
+                <div class="schedule-team">
+                  <span class="schedule-team-emoji">🗡️</span>
+                  <div><div class="schedule-team-name">Dabang Delhi</div><div class="schedule-team-city">New Delhi</div></div>
+                </div>
+                <div class="schedule-vs">VS</div>
+                <div class="schedule-team right">
+                  <span class="schedule-team-emoji">🦅</span>
+                  <div><div class="schedule-team-name">Telugu Titans</div><div class="schedule-team-city">Hyderabad</div></div>
+                </div>
+              </div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-venue"><div class="schedule-venue-icon">📍</div><div>Indira Gandhi Arena</div></div>
+              <span class="schedule-status status-upcoming">Upcoming</span>
+            </div>
+
+            <div class="schedule-match-card" data-status="upcoming">
+              <div class="schedule-time">9:00<small>PM</small></div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-teams">
+                <div class="schedule-team">
+                  <span class="schedule-team-emoji">🎯</span>
+                  <div><div class="schedule-team-name">Jaipur Pink Panthers</div><div class="schedule-team-city">Jaipur</div></div>
+                </div>
+                <div class="schedule-vs">VS</div>
+                <div class="schedule-team right">
+                  <span class="schedule-team-emoji">🐯</span>
+                  <div><div class="schedule-team-name">Patna Pirates</div><div class="schedule-team-city">Patna</div></div>
+                </div>
+              </div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-venue"><div class="schedule-venue-icon">📍</div><div>SMS Stadium, Jaipur</div></div>
+              <span class="schedule-status status-upcoming">Upcoming</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Completed matches -->
+        <div class="schedule-day reveal">
+          <div class="schedule-day-header">
+            <div class="schedule-day-date" style="background:var(--dark3);border:1px solid rgba(255,255,255,0.1);opacity:0.6;">
+              <div class="schedule-day-num" style="color:var(--text-muted);">11</div>
+              <div class="schedule-day-month">Dec 2025</div>
+            </div>
+            <div>
+              <div class="schedule-day-label" style="color:var(--text-muted);">Yesterday</div>
+              <div class="schedule-day-count">2 matches completed</div>
+            </div>
+          </div>
+          <div class="schedule-matches">
+            <div class="schedule-match-card" data-status="completed" style="opacity:0.75;">
+              <div class="schedule-time" style="color:var(--text-muted);">FT</div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-teams">
+                <div class="schedule-team">
+                  <span class="schedule-team-emoji">🐅</span>
+                  <div><div class="schedule-team-name">Bengal Warriors</div><div class="schedule-team-city">Kolkata</div></div>
+                </div>
+                <div class="score-display">41 – 38</div>
+                <div class="schedule-team right">
+                  <span class="schedule-team-emoji">🗡️</span>
+                  <div><div class="schedule-team-name">Dabang Delhi</div><div class="schedule-team-city">New Delhi</div></div>
+                </div>
+              </div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-venue"><div class="schedule-venue-icon">📍</div><div>Netaji Subhash Chandra Bose Indoor Stadium</div></div>
+              <span class="schedule-status status-completed">Full Time</span>
+            </div>
+
+            <div class="schedule-match-card" data-status="completed" style="opacity:0.75;">
+              <div class="schedule-time" style="color:var(--text-muted);">FT</div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-teams">
+                <div class="schedule-team">
+                  <span class="schedule-team-emoji">👑</span>
+                  <div><div class="schedule-team-name">Tamil Thalaivas</div><div class="schedule-team-city">Chennai</div></div>
+                </div>
+                <div class="score-display">36 – 44</div>
+                <div class="schedule-team right">
+                  <span class="schedule-team-emoji">🔱</span>
+                  <div><div class="schedule-team-name">Puneri Paltan</div><div class="schedule-team-city">Pune</div></div>
+                </div>
+              </div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-venue"><div class="schedule-venue-icon">📍</div><div>Jawaharlal Nehru Indoor Stadium</div></div>
+              <span class="schedule-status status-completed">Full Time</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script src="nav.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Filter tabs for schedule
+      const tabs = document.querySelectorAll('.filter-tab');
+      const matchCards = document.querySelectorAll('.schedule-match-card');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          const filter = tab.dataset.filter;
+          matchCards.forEach(card => {
+            const status = card.dataset.status;
+            card.style.display = (filter === 'all' || status === filter) ? '' : 'none';
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

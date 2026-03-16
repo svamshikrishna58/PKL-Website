@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teams – Pro Kabaddi League</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .team-website-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 9px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      color: #888899;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .team-website-btn:hover {
+      background: var(--team-color, #e8001c);
+      border-color: var(--team-color, #e8001c);
+      color: #fff;
+    }
+    .team-website-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+    .team-website-btn .btn-domain { opacity: 0.6; font-size: 10px; font-weight: 400; }
+    .team-website-btn:hover .btn-domain { opacity: 0.85; }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-breadcrumb"><a href="index.html">Home</a> / Teams</div>
+        <h1 class="page-hero-title">THE <span>FRANCHISES</span></h1>
+        <p style="color:var(--text-muted);font-size:15px;max-width:500px;margin-top:8px;">
+          12 franchises. 12 cities. 1 championship dream. Meet the teams battling for PKL Season 12 glory.
+        </p>
+      </div>
+    </section>
+
+    <!-- Teams Grid -->
+    <section class="section">
+      <div class="container">
+        <div style="margin-bottom:40px;" class="reveal">
+          <div class="tag">Season 12 · 2025</div>
+          <h2 class="section-title">ALL <span style="color:var(--red);">12 TEAMS</span></h2>
+          <div class="red-line"></div>
+        </div>
+
+        <div class="grid-4" style="margin-bottom:64px;">
+
+          <!-- Team 1: Patna Pirates -->
+          <div class="team-card reveal" style="--team-color:#FF6B35;" data-delay="0">
+            <div class="team-logo-wrap">🐯</div>
+            <div class="team-name">Patna Pirates</div>
+            <div class="team-city">Patna, Bihar</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:8px;">
+              The most successful PKL franchise with 3 consecutive titles (Season 3, 4 & 5). Legendary raiders have called this home.
+            </p>
+            <div class="team-stat">
+              <div class="team-stat-item"><div class="team-stat-val">3</div><div class="team-stat-label">Titles</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">12</div><div class="team-stat-label">Seasons</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">24</div><div class="team-stat-label">Players</div></div>
+            </div>
+            <a class="team-website-btn" href="https://www.prokabaddi.com/teams/patna-pirates-profile-6" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              Official Team Page <span class="btn-domain">prokabaddi.com</span>
+            </a>
+          </div>
+
+          <!-- Team 2: Jaipur Pink Panthers — jaipurpinkpanthers.com -->
+          <div class="team-card reveal" style="--team-color:#FFB800;" data-delay="80">
+            <div class="team-logo-wrap">🎯</div>
+            <div class="team-name">Jaipur Pink Panthers</div>
+            <div class="team-city">Jaipur, Rajasthan</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:8px;">
+              Co-owned by Abhishek Bachchan, the Pink Panthers dominated Season 1 & 9. Known for aggressive raid strategies.
+            </p>
+            <div class="team-stat">
+              <div class="team-stat-item"><div class="team-stat-val">2</div><div class="team-stat-label">Titles</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">12</div><div class="team-stat-label">Seasons</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">23</div><div class="team-stat-label">Players</div></div>
+            </div>
+            <a class="team-website-btn" href="https://www.jaipurpinkpanthers.com" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              Official Team Website <span class="btn-domain">jaipurpinkpanthers.com</span>
+            </a>
+          </div>
+
+          <!-- Team 3: Bengaluru Bulls — bengalurubulls.com -->
+          <div class="team-card reveal" style="--team-color:#E8001C;" data-delay="160">
+            <div class="team-logo-wrap">⚡</div>
+            <div class="team-name">Bengaluru Bulls</div>
+            <div class="team-city">Bengaluru, Karnataka</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:8px;">
+              Season 7 champions, the Bulls have a massive fan base and are known for their physicality and defensive game.
+            </p>
+            <div class="team-stat">
+              <div class="team-stat-item"><div class="team-stat-val">1</div><div class="team-stat-label">Titles</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">12</div><div class="team-stat-label">Seasons</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">22</div><div class="team-stat-label">Players</div></div>
+            </div>
+            <a class="team-website-btn" href="https://www.bengalurubulls.com" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              Official Team Website <span class="btn-domain">bengalurubulls.com</span>
+            </a>
+          </div>
+
+          <!-- Team 4: U Mumba — usports.in -->
+          <div class="team-card reveal" style="--team-color:#0055B3;" data-delay="240">
+            <div class="team-logo-wrap">🐬</div>
+            <div class="team-name">U Mumba</div>
+            <div class="team-city">Mumbai, Maharashtra</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:8px;">
+              Season 2 champions backed by Unilazer Ventures. The Mumbai team has consistently been in contention for the top spot.
+            </p>
+            <div class="team-stat">
+              <div class="team-stat-item"><div class="team-stat-val">1</div><div class="team-stat-label">Titles</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">12</div><div class="team-stat-label">Seasons</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">21</div><div class="team-stat-label">Players</div></div>
+            </div>
+            <a class="team-website-btn" href="https://www.usports.in" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              Official Team Website <span class="btn-domain">usports.in</span>
+            </a>
+          </div>
+
+          <!-- Team 5: Bengal Warriorz -->
+          <div class="team-card reveal" style="--team-color:#7B2FBE;" data-delay="0">
+            <div class="team-logo-wrap">🐅</div>
+            <div class="team-name">Bengal Warriorz</div>
+            <div class="team-city">Kolkata, West Bengal</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:8px;">
+              Season 8 champions, the Warriorz rely on powerful defenders and their passionate Kolkata fan base fuels their drive.
+            </p>
+            <div class="team-stat">
+              <div class="team-stat-item"><div class="team-stat-val">1</div><div class="team-stat-label">Titles</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">12</div><div class="team-stat-label">Seasons</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">22</div><div class="team-stat-label">Players</div></div>
+            </div>
+            <a class="team-website-btn" href="https://www.prokabaddi.com/teams/bengal-warriorz-profile-4" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              Official Team Page <span class="btn-domain">prokabaddi.com</span>
+            </a>
+          </div>
+
+          <!-- Team 6: Dabang Delhi K.C. — PKL 12 Champions -->
+          <div class="team-card reveal" style="--team-color:#1E88E5;" data-delay="80">
+            <div class="team-logo-wrap">🗡️</div>
+            <div class="team-name">Dabang Delhi K.C.</div>
+            <div class="team-city">New Delhi</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:8px;">
+              🏆 PKL Season 12 Champions! Defeated Puneri Paltan 31–28 in the 2025 final at home. Two-time title holders.
+            </p>
+            <div class="team-stat">
+              <div class="team-stat-item"><div class="team-stat-val">2</div><div class="team-stat-label">Titles</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">12</div><div class="team-stat-label">Seasons</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">24</div><div class="team-stat-label">Players</div></div>
+            </div>
+            <a class="team-website-btn" href="https://www.prokabaddi.com/teams/dabang-delhi-kc-profile-2" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              Official Team Page <span class="btn-domain">prokabaddi.com</span>
+            </a>
+          </div>
+
+          <!-- Team 7: Tamil Thalaivas -->
+          <div class="team-card reveal" style="--team-color:#00B0A0;" data-delay="160">
+            <div class="team-logo-wrap">👑</div>
+            <div class="team-name">Tamil Thalaivas</div>
+            <div class="team-city">Chennai, Tamil Nadu</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:8px;">
+              Home to Pawan Sehrawat, the highest-paid player in PKL history. The Thalaivas are hungry for their first title.
+            </p>
+            <div class="team-stat">
+              <div class="team-stat-item"><div class="team-stat-val">0</div><div class="team-stat-label">Titles</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">8</div><div class="team-stat-label">Seasons</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">23</div><div class="team-stat-label">Players</div></div>
+            </div>
+            <a class="team-website-btn" href="https://www.prokabaddi.com/teams/tamil-thalaivas-profile-29" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              Official Team Page <span class="btn-domain">prokabaddi.com</span>
+            </a>
+          </div>
+
+          <!-- Team 8: Haryana Steelers — haryanasteelers.com — PKL 11 Champions -->
+          <div class="team-card reveal" style="--team-color:#7EC8E3;" data-delay="240">
+            <div class="team-logo-wrap">🦬</div>
+            <div class="team-name">Haryana Steelers</div>
+            <div class="team-city">Rohtak, Haryana</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:8px;">
+              🏆 PKL Season 11 Champions! Defeated Patna Pirates 32–23 in the 2024 final. A powerhouse of kabaddi talent from Haryana.
+            </p>
+            <div class="team-stat">
+              <div class="team-stat-item"><div class="team-stat-val">1</div><div class="team-stat-label">Titles</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">8</div><div class="team-stat-label">Seasons</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">22</div><div class="team-stat-label">Players</div></div>
+            </div>
+            <a class="team-website-btn" href="https://www.haryanasteelers.com" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              Official Team Website <span class="btn-domain">haryanasteelers.com</span>
+            </a>
+          </div>
+
+          <!-- Team 9: Puneri Paltan — puneripaltan.com -->
+          <div class="team-card reveal" style="--team-color:#FF9500;" data-delay="0">
+            <div class="team-logo-wrap">🔱</div>
+            <div class="team-name">Puneri Paltan</div>
+            <div class="team-city">Pune, Maharashtra</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:8px;">
+              Season 10 champions and PKL 12 runners-up. Puneri Paltan continue to be one of the league's most dangerous sides.
+            </p>
+            <div class="team-stat">
+              <div class="team-stat-item"><div class="team-stat-val">1</div><div class="team-stat-label">Titles</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">12</div><div class="team-stat-label">Seasons</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">25</div><div class="team-stat-label">Players</div></div>
+            </div>
+            <a class="team-website-btn" href="https://www.puneripaltan.com" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              Official Team Website <span class="btn-domain">puneripaltan.com</span>
+            </a>
+          </div>
+
+          <!-- Team 10: UP Yoddha — gmrsports.in/up-yoddhas -->
+          <div class="team-card reveal" style="--team-color:#E91E63;" data-delay="80">
+            <div class="team-logo-wrap">⚔️</div>
+            <div class="team-name">UP Yoddha</div>
+            <div class="team-city">Lucknow, Uttar Pradesh</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:8px;">
+              Representing India's largest state, UP Yoddha bring a warrior spirit and a deep pool of talented players.
+            </p>
+            <div class="team-stat">
+              <div class="team-stat-item"><div class="team-stat-val">0</div><div class="team-stat-label">Titles</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">8</div><div class="team-stat-label">Seasons</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">22</div><div class="team-stat-label">Players</div></div>
+            </div>
+            <a class="team-website-btn" href="https://www.gmrsports.in/up-yoddhas" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              Official Team Website <span class="btn-domain">gmrsports.in</span>
+            </a>
+          </div>
+
+          <!-- Team 11: Telugu Titans — telugutitans.in -->
+          <div class="team-card reveal" style="--team-color:#F4D03F;" data-delay="160">
+            <div class="team-logo-wrap">🦅</div>
+            <div class="team-name">Telugu Titans</div>
+            <div class="team-city">Hyderabad, Telangana</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:8px;">
+              Backed by Veera Sports, the Titans are rebuilding with young talent and have some of the most passionate fans in PKL.
+            </p>
+            <div class="team-stat">
+              <div class="team-stat-item"><div class="team-stat-val">0</div><div class="team-stat-label">Titles</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">12</div><div class="team-stat-label">Seasons</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">21</div><div class="team-stat-label">Players</div></div>
+            </div>
+            <a class="team-website-btn" href="https://www.telugutitans.in" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              Official Team Website <span class="btn-domain">telugutitans.in</span>
+            </a>
+          </div>
+
+          <!-- Team 12: Gujarat Giants — gujaratgiants.com -->
+          <div class="team-card reveal" style="--team-color:#00B894;" data-delay="240">
+            <div class="team-logo-wrap">🦁</div>
+            <div class="team-name">Gujarat Giants</div>
+            <div class="team-city">Ahmedabad, Gujarat</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:8px;">
+              Formerly Gujarat Fortune Giants, the team has been revamped with a fresh brand and squad targeting their first title.
+            </p>
+            <div class="team-stat">
+              <div class="team-stat-item"><div class="team-stat-val">0</div><div class="team-stat-label">Titles</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">8</div><div class="team-stat-label">Seasons</div></div>
+              <div class="team-stat-item"><div class="team-stat-val">23</div><div class="team-stat-label">Players</div></div>
+            </div>
+            <a class="team-website-btn" href="https://www.gujaratgiants.com/pro-kabaddi" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              Official Team Website <span class="btn-domain">gujaratgiants.com</span>
+            </a>
+          </div>
+
+        </div><!-- /grid-4 -->
+      </div>
+    </section>
+
+  </div><!-- /page-wrap -->
+
+  <script src="nav.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

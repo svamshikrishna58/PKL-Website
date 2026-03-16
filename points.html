@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Points Table – Pro Kabaddi League</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .table-wrap {
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .table-header {
+      background: linear-gradient(135deg, var(--dark2), var(--mid));
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .table-header-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .table-header-season {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+
+    .points-table-wrap { overflow-x: auto; }
+
+    .styled-table .qualifier {
+      border-left: 3px solid var(--gold);
+    }
+
+    .zone-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .nrr-positive { color: #00C864; }
+    .nrr-negative { color: var(--red); }
+
+    .legend {
+      display: flex;
+      gap: 24px;
+      padding: 16px 24px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.05em;
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 2px;
+    }
+
+    /* Stats Cards */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .stat-card {
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .stat-card:hover { border-color: rgba(255,184,0,0.2); transform: translateY(-4px); }
+
+    .stat-card-emoji { font-size: 28px; margin-bottom: 12px; }
+    .stat-card-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-card-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .stat-card-team {
+      font-size: 13px;
+      color: var(--text);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .stats-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-breadcrumb"><a href="index.html">Home</a> / Points Table</div>
+        <h1 class="page-hero-title">POINTS <span>TABLE</span></h1>
+        <p style="color:var(--text-muted);font-size:15px;max-width:500px;margin-top:8px;">
+          Season 11 standings. Top 6 teams qualify for playoffs. Updated after every match.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <!-- Quick Stats -->
+        <div style="margin-bottom:16px;" class="reveal">
+          <div class="tag">Season 11 Stats</div>
+          <h2 class="section-title">SEASON <span style="color:var(--red);">LEADERS</span></h2>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card reveal" data-delay="0">
+            <div class="stat-card-emoji">🏆</div>
+            <div class="stat-card-val">1st</div>
+            <div class="stat-card-label">Current Leader</div>
+            <div class="stat-card-team">🔱 Puneri Paltan</div>
+          </div>
+          <div class="stat-card reveal" data-delay="80">
+            <div class="stat-card-emoji">⚡</div>
+            <div class="stat-card-val">7</div>
+            <div class="stat-card-label">Win Streak Leader</div>
+            <div class="stat-card-team">🎯 Jaipur Pink Panthers</div>
+          </div>
+          <div class="stat-card reveal" data-delay="160">
+            <div class="stat-card-emoji">🎯</div>
+            <div class="stat-card-val">+0.84</div>
+            <div class="stat-card-label">Best NRR</div>
+            <div class="stat-card-team">🔱 Puneri Paltan</div>
+          </div>
+          <div class="stat-card reveal" data-delay="240">
+            <div class="stat-card-emoji">📊</div>
+            <div class="stat-card-val">68</div>
+            <div class="stat-card-label">Matches Played So Far</div>
+            <div class="stat-card-team">Season 11 · 2025</div>
+          </div>
+        </div>
+
+        <!-- Points Table -->
+        <div class="table-wrap reveal">
+          <div class="table-header">
+            <div class="table-header-title">League Standings</div>
+            <div class="table-header-season">PKL Season 11 · Updated: 12 Dec 2025</div>
+          </div>
+
+          <div class="points-table-wrap">
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th style="width:48px;">#</th>
+                  <th>Team</th>
+                  <th>M</th>
+                  <th>W</th>
+                  <th>L</th>
+                  <th>D</th>
+                  <th>+/–</th>
+                  <th>NRR</th>
+                  <th>Form</th>
+                  <th class="pts">PTS</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <!-- Qualifier Zone label -->
+                <tr><td colspan="10" class="zone-label">🏅 Qualifier Zone (Top 6)</td></tr>
+
+                <tr class="qualifier">
+                  <td class="rank top">1</td>
+                  <td>
+                    <div class="team-cell">
+                      <div class="team-avatar">🔱</div>
+                      <div>
+                        <div class="team-label">Puneri Paltan</div>
+                        <div class="team-abbr">PUN</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>12</td><td>9</td><td>2</td><td>1</td>
+                  <td class="nrr-positive">+45</td>
+                  <td class="nrr-positive">+0.84</td>
+                  <td><div class="form-badges">
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-w">W</span>
+                  </div></td>
+                  <td class="pts">19</td>
+                </tr>
+
+                <tr class="qualifier">
+                  <td class="rank top">2</td>
+                  <td>
+                    <div class="team-cell">
+                      <div class="team-avatar">🎯</div>
+                      <div>
+                        <div class="team-label">Jaipur Pink Panthers</div>
+                        <div class="team-abbr">JAI</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>12</td><td>8</td><td>3</td><td>1</td>
+                  <td class="nrr-positive">+38</td>
+                  <td class="nrr-positive">+0.71</td>
+                  <td><div class="form-badges">
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-w">W</span>
+                  </div></td>
+                  <td class="pts">17</td>
+                </tr>
+
+                <tr class="qualifier">
+                  <td class="rank top">3</td>
+                  <td>
+                    <div class="team-cell">
+                      <div class="team-avatar">🐯</div>
+                      <div>
+                        <div class="team-label">Patna Pirates</div>
+                        <div class="team-abbr">PAT</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>12</td><td>8</td><td>3</td><td>1</td>
+                  <td class="nrr-positive">+29</td>
+                  <td class="nrr-positive">+0.55</td>
+                  <td><div class="form-badges">
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-d">D</span>
+                  </div></td>
+                  <td class="pts">17</td>
+                </tr>
+
+                <tr class="qualifier">
+                  <td class="rank top">4</td>
+                  <td>
+                    <div class="team-cell">
+                      <div class="team-avatar">🐅</div>
+                      <div>
+                        <div class="team-label">Bengal Warriors</div>
+                        <div class="team-abbr">BEN</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>12</td><td>7</td><td>4</td><td>1</td>
+                  <td class="nrr-positive">+18</td>
+                  <td class="nrr-positive">+0.32</td>
+                  <td><div class="form-badges">
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-l">L</span>
+                  </div></td>
+                  <td class="pts">15</td>
+                </tr>
+
+                <tr class="qualifier">
+                  <td class="rank top">5</td>
+                  <td>
+                    <div class="team-cell">
+                      <div class="team-avatar">⚡</div>
+                      <div>
+                        <div class="team-label">Bengaluru Bulls</div>
+                        <div class="team-abbr">BLR</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>12</td><td>6</td><td>4</td><td>2</td>
+                  <td class="nrr-positive">+12</td>
+                  <td class="nrr-positive">+0.21</td>
+                  <td><div class="form-badges">
+                    <span class="form-badge form-d">D</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-w">W</span>
+                  </div></td>
+                  <td class="pts">14</td>
+                </tr>
+
+                <tr class="qualifier">
+                  <td class="rank top">6</td>
+                  <td>
+                    <div class="team-cell">
+                      <div class="team-avatar">🗡️</div>
+                      <div>
+                        <div class="team-label">Dabang Delhi K.C.</div>
+                        <div class="team-abbr">DEL</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>12</td><td>6</td><td>5</td><td>1</td>
+                  <td class="nrr-positive">+5</td>
+                  <td class="nrr-positive">+0.08</td>
+                  <td><div class="form-badges">
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-l">L</span>
+                  </div></td>
+                  <td class="pts">13</td>
+                </tr>
+
+                <!-- Elimination zone -->
+                <tr><td colspan="10" class="zone-label" style="color:#FF6B6B;">⚠ Elimination Zone</td></tr>
+
+                <tr>
+                  <td class="rank">7</td>
+                  <td>
+                    <div class="team-cell">
+                      <div class="team-avatar">🐬</div>
+                      <div><div class="team-label">U Mumba</div><div class="team-abbr">MUM</div></div>
+                    </div>
+                  </td>
+                  <td>12</td><td>5</td><td>5</td><td>2</td>
+                  <td class="nrr-negative">-3</td>
+                  <td class="nrr-negative">-0.06</td>
+                  <td><div class="form-badges">
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-d">D</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-l">L</span>
+                  </div></td>
+                  <td class="pts">12</td>
+                </tr>
+
+                <tr>
+                  <td class="rank">8</td>
+                  <td>
+                    <div class="team-cell">
+                      <div class="team-avatar">🦬</div>
+                      <div><div class="team-label">Haryana Steelers</div><div class="team-abbr">HAR</div></div>
+                    </div>
+                  </td>
+                  <td>12</td><td>5</td><td>6</td><td>1</td>
+                  <td class="nrr-negative">-12</td>
+                  <td class="nrr-negative">-0.24</td>
+                  <td><div class="form-badges">
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-l">L</span>
+                  </div></td>
+                  <td class="pts">11</td>
+                </tr>
+
+                <tr>
+                  <td class="rank">9</td>
+                  <td>
+                    <div class="team-cell">
+                      <div class="team-avatar">👑</div>
+                      <div><div class="team-label">Tamil Thalaivas</div><div class="team-abbr">TAM</div></div>
+                    </div>
+                  </td>
+                  <td>12</td><td>4</td><td>6</td><td>2</td>
+                  <td class="nrr-negative">-18</td>
+                  <td class="nrr-negative">-0.35</td>
+                  <td><div class="form-badges">
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-d">D</span>
+                    <span class="form-badge form-l">L</span>
+                  </div></td>
+                  <td class="pts">10</td>
+                </tr>
+
+                <tr>
+                  <td class="rank">10</td>
+                  <td>
+                    <div class="team-cell">
+                      <div class="team-avatar">⚔️</div>
+                      <div><div class="team-label">UP Yoddha</div><div class="team-abbr">UPY</div></div>
+                    </div>
+                  </td>
+                  <td>12</td><td>4</td><td>7</td><td>1</td>
+                  <td class="nrr-negative">-26</td>
+                  <td class="nrr-negative">-0.48</td>
+                  <td><div class="form-badges">
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-d">D</span>
+                  </div></td>
+                  <td class="pts">9</td>
+                </tr>
+
+                <tr>
+                  <td class="rank">11</td>
+                  <td>
+                    <div class="team-cell">
+                      <div class="team-avatar">🦁</div>
+                      <div><div class="team-label">Gujarat Giants</div><div class="team-abbr">GUJ</div></div>
+                    </div>
+                  </td>
+                  <td>12</td><td>3</td><td>8</td><td>1</td>
+                  <td class="nrr-negative">-38</td>
+                  <td class="nrr-negative">-0.68</td>
+                  <td><div class="form-badges">
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-w">W</span>
+                    <span class="form-badge form-l">L</span>
+                  </div></td>
+                  <td class="pts">7</td>
+                </tr>
+
+                <tr>
+                  <td class="rank">12</td>
+                  <td>
+                    <div class="team-cell">
+                      <div class="team-avatar">🦅</div>
+                      <div><div class="team-label">Telugu Titans</div><div class="team-abbr">TEL</div></div>
+                    </div>
+                  </td>
+                  <td>12</td><td>2</td><td>9</td><td>1</td>
+                  <td class="nrr-negative">-50</td>
+                  <td class="nrr-negative">-0.89</td>
+                  <td><div class="form-badges">
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-l">L</span>
+                    <span class="form-badge form-d">D</span>
+                  </div></td>
+                  <td class="pts">5</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Legend -->
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--gold);"></div>Qualifier Zone (Top 6)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(255,107,107,0.7);"></div>Elimination Zone</div>
+            <div class="legend-item"><div class="legend-dot form-w" style="border-radius:2px;"></div>Win</div>
+            <div class="legend-item"><div class="legend-dot form-l" style="border-radius:2px;background:rgba(232,0,28,0.2);"></div>Loss</div>
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.1);border-radius:2px;"></div>Draw</div>
+            <div class="legend-item" style="margin-left:auto;font-size:11px;">M=Matches · W=Wins · L=Losses · D=Draws · PTS=Points · NRR=Net Raid Rate</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script src="nav.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

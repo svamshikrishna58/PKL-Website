@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – Pro Kabaddi League</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* Contact Info Item */
+    .contact-info-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px;
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      transition: var(--transition);
+      margin-bottom: 16px;
+    }
+    .contact-info-item:hover {
+      border-color: rgba(232,0,28,0.25);
+      transform: translateX(6px);
+    }
+
+    .contact-info-icon {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      background: rgba(232,0,28,0.1);
+      border: 1px solid rgba(232,0,28,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .contact-info-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .contact-info-value {
+      font-size: 15px;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .contact-info-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Form */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+    /* Success State */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+      background: var(--dark3);
+      border: 1px solid rgba(0,200,100,0.2);
+      border-radius: 16px;
+    }
+
+    .form-success-icon { font-size: 64px; margin-bottom: 20px; }
+    .form-success-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--white);
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+    .form-success-msg { font-size: 15px; color: var(--text-muted); }
+
+    /* Social Links */
+    .social-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .social-link-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 12px 16px;
+      transition: var(--transition);
+    }
+    .social-link-card:hover { border-color: rgba(255,184,0,0.2); transform: translateY(-2px); }
+    .social-link-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .social-link-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .social-link-handle { font-size: 12px; color: var(--text-muted); }
+
+    /* Map placeholder */
+    .map-placeholder {
+      width: 100%;
+      height: 200px;
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-family: 'Barlow Condensed', sans-serif;
+      margin-top: 32px;
+    }
+    .map-placeholder-icon { font-size: 36px; }
+    .map-placeholder-text { font-size: 14px; letter-spacing: 0.08em; }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-breadcrumb"><a href="index.html">Home</a> / Contact</div>
+        <h1 class="page-hero-title">GET IN <span>TOUCH</span></h1>
+        <p style="color:var(--text-muted);font-size:15px;max-width:500px;margin-top:8px;">
+          Have questions about PKL Season 11? Want to partner with us? Or just want to share your love for kabaddi? We'd love to hear from you.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact-layout">
+
+          <!-- Left: Contact Info -->
+          <div>
+            <div class="reveal">
+              <div class="tag">Reach Us</div>
+              <h2 class="section-title">CONTACT <span style="color:var(--red);">INFO</span></h2>
+              <div class="red-line"></div>
+            </div>
+
+            <div class="contact-info-item reveal">
+              <div class="contact-info-icon">📍</div>
+              <div>
+                <div class="contact-info-label">Head Office</div>
+                <div class="contact-info-value">Mastech House, Marol Naka</div>
+                <div class="contact-info-sub">Mumbai, Maharashtra – 400059, India</div>
+              </div>
+            </div>
+
+            <div class="contact-info-item reveal">
+              <div class="contact-info-icon">📞</div>
+              <div>
+                <div class="contact-info-label">Phone</div>
+                <div class="contact-info-value">+91 22 4080 8080</div>
+                <div class="contact-info-sub">Mon–Sat, 9:00 AM – 6:00 PM IST</div>
+              </div>
+            </div>
+
+            <div class="contact-info-item reveal">
+              <div class="contact-info-icon">✉️</div>
+              <div>
+                <div class="contact-info-label">Email</div>
+                <div class="contact-info-value">info@prokabaddi.com</div>
+                <div class="contact-info-sub">Media: media@prokabaddi.com</div>
+              </div>
+            </div>
+
+            <div class="contact-info-item reveal">
+              <div class="contact-info-icon">🎟️</div>
+              <div>
+                <div class="contact-info-label">Tickets & Events</div>
+                <div class="contact-info-value">tickets@prokabaddi.com</div>
+                <div class="contact-info-sub">Corporate bookings available</div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="reveal" style="margin-top:24px;">
+              <p style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Follow Us</p>
+              <div class="social-links">
+                <a href="#" class="social-link-card">
+                  <div class="social-link-icon" style="background:#1DA1F2;">𝕏</div>
+                  <div>
+                    <div class="social-link-name">Twitter / X</div>
+                    <div class="social-link-handle">@ProKabaddi</div>
+                  </div>
+                </a>
+                <a href="#" class="social-link-card">
+                  <div class="social-link-icon" style="background:#4267B2;">f</div>
+                  <div>
+                    <div class="social-link-name">Facebook</div>
+                    <div class="social-link-handle">Pro Kabaddi League</div>
+                  </div>
+                </a>
+                <a href="#" class="social-link-card">
+                  <div class="social-link-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">📸</div>
+                  <div>
+                    <div class="social-link-name">Instagram</div>
+                    <div class="social-link-handle">@ProKabaddi</div>
+                  </div>
+                </a>
+                <a href="#" class="social-link-card">
+                  <div class="social-link-icon" style="background:#FF0000;">▶</div>
+                  <div>
+                    <div class="social-link-name">YouTube</div>
+                    <div class="social-link-handle">Pro Kabaddi</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="map-placeholder reveal">
+              <div class="map-placeholder-icon">🗺️</div>
+              <div class="map-placeholder-text">Interactive Map Coming Soon</div>
+              <a href="https://maps.google.com" target="_blank" class="btn btn-outline" style="font-size:12px;padding:8px 16px;margin-top:4px;">Open in Google Maps</a>
+            </div>
+          </div>
+
+          <!-- Right: Contact Form -->
+          <div>
+            <div class="reveal">
+              <div class="tag">Send a Message</div>
+              <h2 class="section-title">WRITE TO <span style="color:var(--red);">US</span></h2>
+              <div class="red-line"></div>
+            </div>
+
+            <!-- Form Container -->
+            <div id="contactFormWrap" class="reveal" style="background:var(--dark3);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:36px;">
+              <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="fname">First Name *</label>
+                    <input type="text" id="fname" class="form-control" placeholder="Pardeep" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="lname">Last Name *</label>
+                    <input type="text" id="lname" class="form-control" placeholder="Narwal" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="email">Email Address *</label>
+                  <input type="email" id="email" class="form-control" placeholder="you@example.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="phone">Phone Number</label>
+                  <input type="tel" id="phone" class="form-control" placeholder="+91 98000 00000">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="subject">Subject *</label>
+                  <select id="subject" class="form-control" required style="cursor:pointer;appearance:auto;">
+                    <option value="" disabled selected>Select a topic</option>
+                    <option value="tickets">Tickets & Match Info</option>
+                    <option value="media">Media & Press Enquiry</option>
+                    <option value="partnership">Corporate Partnership</option>
+                    <option value="broadcast">Broadcast & Streaming</option>
+                    <option value="fan">Fan Feedback</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="message">Message *</label>
+                  <textarea id="message" class="form-control" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+                </div>
+
+                <!-- Consent -->
+                <div style="display:flex;gap:12px;align-items:flex-start;padding:12px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid rgba(255,255,255,0.06);">
+                  <input type="checkbox" id="consent" required style="margin-top:3px;accent-color:var(--red);flex-shrink:0;">
+                  <label for="consent" style="font-size:13px;color:var(--text-muted);cursor:pointer;line-height:1.5;">
+                    I agree to the <a href="#" style="color:var(--gold);">Privacy Policy</a> and consent to PKL processing my personal data to respond to my enquiry.
+                  </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:100%;padding:16px;font-size:16px;margin-top:8px;">
+                  Send Message →
+                </button>
+              </form>
+            </div>
+
+            <!-- Success Message -->
+            <div class="form-success" id="formSuccess">
+              <div class="form-success-icon">✅</div>
+              <div class="form-success-title">Message Sent!</div>
+              <p class="form-success-msg">
+                Thank you for reaching out. Our team will get back to you within 24–48 hours. 
+                In the meantime, follow us on social media for the latest PKL updates!
+              </p>
+              <div style="margin-top:24px;">
+                <a href="index.html" class="btn btn-primary">Back to Home</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- FAQ Section -->
+        <div style="margin-top:80px;">
+          <div style="text-align:center;margin-bottom:40px;" class="reveal">
+            <div class="tag">FAQ</div>
+            <h2 class="section-title">FREQUENTLY ASKED <span style="color:var(--red);">QUESTIONS</span></h2>
+          </div>
+
+          <div class="grid-2 reveal">
+            <div class="info-box">
+              <div class="info-box-icon">🎟️</div>
+              <div class="info-box-title">How do I buy tickets?</div>
+              <p class="info-box-text">Tickets can be purchased online through our official website, on the BookMyShow platform, or at the venue box office on match day. Season passes are also available for select venues.</p>
+            </div>
+            <div class="info-box">
+              <div class="info-box-icon">📺</div>
+              <div class="info-box-title">Where can I watch PKL?</div>
+              <p class="info-box-text">Pro Kabaddi League Season 11 is broadcast live on Star Sports channels. You can also stream all matches live on Disney+ Hotstar across India and select international markets.</p>
+            </div>
+            <div class="info-box">
+              <div class="info-box-icon">🤝</div>
+              <div class="info-box-title">How do I partner with PKL?</div>
+              <p class="info-box-text">We offer various partnership opportunities including title sponsorships, associate sponsorships, broadcast partners, and digital partnerships. Email partnerships@prokabaddi.com for our media kit.</p>
+            </div>
+            <div class="info-box">
+              <div class="info-box-icon">⚡</div>
+              <div class="info-box-title">How are players selected?</div>
+              <p class="info-box-text">Players are acquired through the annual PKL Auction where all 12 franchises bid on domestic and international players. Each team has a salary cap of ₹4 Crore per season.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script src="nav.js"></script>
+  <script src="script.js"></script>
+  <script>
+    function submitForm(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      // Simulate API call
+      setTimeout(() => {
+        document.getElementById('contactFormWrap').style.display = 'none';
+        const success = document.getElementById('formSuccess');
+        success.style.display = 'block';
+        success.style.animation = 'none';
+        // Animate in
+        success.style.opacity = '0';
+        success.style.transform = 'translateY(20px)';
+        success.style.transition = 'all 0.5s ease';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            success.style.opacity = '1';
+            success.style.transform = 'translateY(0)';
+          });
+        });
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
